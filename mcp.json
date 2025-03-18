@@ -1,0 +1,48 @@
+{
+  "name": "bpmn-translator",
+  "version": "1.0.0",
+  "description": "Translates BPMN diagrams into human-readable descriptions and user stories",
+  "functions": [
+    {
+      "name": "translate_bpmn",
+      "description": "Translate a BPMN diagram into human-readable text",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "bpmn_content": {
+            "type": "string",
+            "description": "The BPMN XML content to translate"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": ["description", "user_stories", "both"],
+            "description": "The desired output format",
+            "default": "both"
+          }
+        },
+        "required": ["bpmn_content"]
+      }
+    },
+    {
+      "name": "generate_user_stories",
+      "description": "Generate user stories from a BPMN diagram",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "bpmn_content": {
+            "type": "string",
+            "description": "The BPMN XML content to analyze"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific roles to generate stories for (optional)"
+          }
+        },
+        "required": ["bpmn_content"]
+      }
+    }
+  ]
+}
